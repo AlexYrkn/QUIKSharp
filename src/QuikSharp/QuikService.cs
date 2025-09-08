@@ -293,7 +293,7 @@ namespace QuikSharp
 
                             try
                             {
-                                using (var stream = new NetworkStream(_responseClient.Client))
+                                using (var stream = new NetworkStream(_responseClient.Client, ownsSocket: false))
                                 using (var reader = new StreamReader(stream, Encoding.GetEncoding(1251))) //true
                                 {
                                     while (!_cts.IsCancellationRequested)
@@ -405,7 +405,7 @@ namespace QuikSharp
                             Trace.WriteLine("Callback channel connected");
                             try
                             {
-                                using (var stream = new NetworkStream(_callbackClient.Client))
+                                using (var stream = new NetworkStream(_callbackClient.Client, ownsSocket: false))
                                 using (var reader = new StreamReader(stream, Encoding.GetEncoding(1251))) //true
                                 {
                                     while (!_cts.IsCancellationRequested)
