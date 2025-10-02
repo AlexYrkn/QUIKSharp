@@ -782,7 +782,7 @@ namespace QuikSharp
         /// <summary>
         /// Get or Generate unique transaction ID for function SendTransaction()
         /// </summary>
-        internal int GetUniqueTransactionId()
+        public int GetUniqueTransactionId()
         {
             if (mmf == null || accessor == null)
             {

@@ -385,6 +385,18 @@ function qsfunctions.getTradeAccount(msg)
 	return msg
 end
 
+--- Функция возвращает торговый счет для запрашиваемого айди фирмы
+function qsfunctions.getTradeAccountByFirm(msg)
+	for i=0,getNumberOf("trade_accounts")-1 do
+		local trade_account = getItem("trade_accounts",i)
+		if string.find(trade_account.firmid,'|' .. msg.data .. '|',1,1) then
+			msg.data = trade_account.trdaccid
+			return msg
+		end
+	end
+	return msg
+end
+
 --- Функция возвращает торговые счета в системе, у которых указаны поддерживаемые классы инструментов.
 function qsfunctions.getTradeAccounts(msg)
 	local trade_accounts = {}
